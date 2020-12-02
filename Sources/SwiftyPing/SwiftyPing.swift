@@ -492,6 +492,7 @@ public class SwiftyPing: NSObject {
             if !validation { return }
         } catch let error as PingError {
             validationError = error
+            return
         } catch {
             print("Unhandled error thrown: \(error)")
         }
@@ -506,6 +507,8 @@ public class SwiftyPing: NSObject {
                                     error: validationError,
                                     byteCount: data.count,
                                     ipHeader: ipHeader)
+        
+        
         isPinging = false
         informObserver(of: response)
         
